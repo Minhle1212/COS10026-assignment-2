@@ -9,8 +9,16 @@
 
 <body>
     <?php 
+    function sanitise_input($data) {
+        $data = trim($data);
+        $data = stripcslashes($data);
+        $data = htmlspecialchars($data);
+        return $data
+    }
 
-    $jobNum = htmlspecialchars($_POST["job_num"]);
+
+    $jobNum = $_POST["job_num"];
+    $jobNum = sanitise_input($jobNum)
     $fname = htmlspecialchars($_POST["fname"]);
     $lname = htmlspecialchars($_POST["lname"]);
     $street = htmlspecialchars($_POST["street"]);
