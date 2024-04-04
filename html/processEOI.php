@@ -18,7 +18,7 @@
 
 
     $jobNum = $_POST["job_num"];
-    $jobNum = sanitise_input($jobNum)
+    $jobNum = sanitise_input($jobNum);
     $fname = htmlspecialchars($_POST["fname"]);
     $lname = htmlspecialchars($_POST["lname"]);
     $street = htmlspecialchars($_POST["street"]);
@@ -34,7 +34,7 @@
     require_once("settings.php");	
     $conn = @mysqli_connect($host,$user,$pwd,$sql_db);	
     $sql_table = "eoi";	
-    $query = "insert into $sql_table (jobNum, fname, lname, street, town,	state, pcode, email, phone,	skills, otherskills, stat) 
+    $query = "insert into $sql_table (jobNum, fname, lname, street, town,	state, pcode, email, phone,	skills, otherskills, stat)
                 values ('$jobNum', '$fname', '$lname', '$street', '$town','$state', '$pcode','$email', '$phone', '$skills', '$otherskills', '$stat')";		//MySQL command
     $result = mysqli_query($conn, $query);	
     if (!$result){		

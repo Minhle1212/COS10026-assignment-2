@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <script src="https://kit.fontawesome.com/142309adca.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans:wght@600&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../style/index.css">
-    </head>
-
-    <body>
-
-        <!-- menu-bar -->
+<!-- menu-bar -->
         <header class="menu">
             <a href="index.html" class="logo"><img src="../images/ava2-removebg-preview.png" alt="smarthouse logo"></a>
             <nav class="nav-bar">
-                <a href="index.html">Home</a> 
-                <a href="about.html">About Us</a>
-                <a href="jobs.html">Application</a>
+                <a href="./index.php">Home</a>
+                <a href="./about.php">About Us</a>
+                <a href="./jobs.php">Application</a>
             </nav>
             <div class="login">
                 <a href="">Login</a>
@@ -200,5 +185,3 @@
                 </div>
             </div>
         </footer>
-    </body>
-</html>
