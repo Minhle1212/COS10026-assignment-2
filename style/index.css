@@ -1361,3 +1361,9 @@ input, .state_choice {
        box-shadow: 0 0 37px #1eff8b;
        cursor: pointer;
    }
+
+
+   /* manage  */
+   form{
+    color: white;
+   }

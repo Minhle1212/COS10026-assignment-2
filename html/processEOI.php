@@ -81,7 +81,6 @@
     }
     
 
-<<<<<<< HEAD
     $jobNum = $_POST["job_num"];
     $jobNum = sanitise_input($jobNum);
     $fname = htmlspecialchars($_POST["fname"]);
@@ -92,19 +91,14 @@
     $pcode = htmlspecialchars($_POST["pcode"]);
     $email = htmlspecialchars($_POST["mail"]);
     $phone = htmlspecialchars($_POST["phone"]);
-=======
->>>>>>> 17c446eedf2defa0e5a993e5667f227a68e90934
     $skills = implode(", ", $_POST["tech"]);
     $stat = 'New';
 
     require_once("settings.php");	
     $conn = @mysqli_connect($host,$user,$pwd,$sql_db);	
     $sql_table = "eoi";	
-<<<<<<< HEAD
     $query = "insert into $sql_table (jobNum, fname, lname, street, town,	state, pcode, email, phone,	skills, otherskills, stat)
-=======
     $query = "insert into $sql_table (jobNum, fname, lname, street, town, state, pcode, email, phone,	skills, otherskills, stat) 
->>>>>>> 17c446eedf2defa0e5a993e5667f227a68e90934
                 values ('$jobNum', '$fname', '$lname', '$street', '$town','$state', '$pcode','$email', '$phone', '$skills', '$otherskills', '$stat')";		//MySQL command
     $result = mysqli_query($conn, $query);	
     if (!$result){		
