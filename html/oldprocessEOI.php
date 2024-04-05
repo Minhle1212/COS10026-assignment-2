@@ -97,7 +97,6 @@
     require_once("settings.php");	
     $conn = @mysqli_connect($host,$user,$pwd,$sql_db);	
     $sql_table = "eoi";	
-    $query = "insert into $sql_table (jobNum, fname, lname, street, town,	state, pcode, email, phone,	skills, otherskills, stat)
     $query = "insert into $sql_table (jobNum, fname, lname, street, town, state, pcode, email, phone,	skills, otherskills, stat) 
                 values ('$jobNum', '$fname', '$lname', '$street', '$town','$state', '$pcode','$email', '$phone', '$skills', '$otherskills', '$stat')";		//MySQL command
     $result = mysqli_query($conn, $query);	

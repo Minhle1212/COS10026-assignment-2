@@ -36,80 +36,89 @@ if (!$conn) {
 
 $errMsg = ""; // Added variable to store error messages
 
-if (isset($_POST["Job_Reference"])) {
-    $Job_Reference = sanitise_input($_POST["Job_Reference"]);
+if (isset($_POST["job_num"])) {
+    $Job_Reference = sanitise_input($_POST["job_num"]);
 } else {
     echo"Invalid Job reference number";
     exit;
 }
 
-if (isset($_POST["First_Name"])) {
-    $First_Name = sanitise_input($_POST["First_Name"]);
+if (isset($_POST["fname"])) {
+    $First_Name = sanitise_input($_POST["fname"]);
 } else {
     echo"Invalid pattern for First Name ";
     exit;
 }
 
-if (isset($_POST["Last_Name"])) {
-    $Last_Name = sanitise_input($_POST["Last_Name"]);
+if (isset($_POST["lname"])) {
+    $Last_Name = sanitise_input($_POST["lname"]);
 } else {
     echo"Invalid Last Name";
     exit;
 }
 
-if (isset($_POST["dob"])) {
-    $dob = sanitise_input($_POST["dob"]);
+if (isset($_POST["birthday"])) {
+    $dob = sanitise_input($_POST["birthday"]);
 } else {
     echo"Invalid  date 0f birth";
     exit;
 }
 
-if (isset($_POST["Gender"])) {
-    $Gender = sanitise_input($_POST["Gender"]);
+if (isset($_POST["gender"])) {
+    $Gender = sanitise_input($_POST["gender"]);
 } else {
     echo"Select gender";
     exit;
 }
 
-if (isset($_POST["Street_Address"])) {
-    $Street_Address = sanitise_input($_POST["Street_Address"]);
+if (isset($_POST["street"])) {
+    $Street_Address = sanitise_input($_POST["street"]);
 } else {
     echo"Invalid Street Address";
     exit;
 }
-if (isset($_POST["Suburb_Town"])) {
-    $Suburb_Town = sanitise_input($_POST["Suburb_Town"]);
+if (isset($_POST["town"])) {
+    $Suburb_Town = sanitise_input($_POST["town"]);
 } else {
     echo"Invalid Suburb_Town";
     exit;
 }
 
-if (isset($_POST["State"])) {
-    $State = sanitise_input($_POST["State"]);
+if (isset($_POST["state"])) {
+    $State = sanitise_input($_POST["state"]);
 } else {
     echo"Invalid State";
     exit;
 }
 
-if (isset($_POST["Postcode"])) {
-    $Postcode = sanitise_input($_POST["Postcode"]);
+if (isset($_POST["pcode"])) {
+    $Postcode = sanitise_input($_POST["pcode"]);
 } else {
     echo"Invalid Postcode";
     exit;
 }
-if (isset($_POST["Email_Address"])) {
-    $Email_Address = sanitise_input($_POST["Email_Address"]);
+if (isset($_POST["mail"])) {
+    $Email_Address = sanitise_input($_POST["mail"]);
 } else {
     echo"Invalid Email Address";
     exit;
 }
 
-if (isset($_POST["Phone_Number"])) {
-    $Phone_Number = sanitise_input($_POST["Phone_Number"]);
+if (isset($_POST["phone"])) {
+    $Phone_Number = sanitise_input($_POST["phone"]);
 } else {
     echo"Invalid Phone Number";
     exit;
 }
+
+if (isset($_POST["tech"])) {
+    $Skills = implode(", ", $_POST["tech"]);
+   
+} else {
+    echo"Invalid skills";
+    exit;
+}
+
 
 if (isset($_POST["OtherSkills"])) {
     $OtherSkills = sanitise_input($_POST["OtherSkills"]);
@@ -117,18 +126,8 @@ if (isset($_POST["OtherSkills"])) {
     $OtherSkills = "";
 }
 
-$Job_Reference = sanitise_input($Job_Reference);
-$First_Name = sanitise_input($First_Name);
-$Last_Name = sanitise_input($Last_Name);
-$dob = sanitise_input($dob);
-$Gender = sanitise_input($Gender);
-$Street_Address = sanitise_input($Street_Address);
-$Suburb_Town = sanitise_input($Suburb_Town);
-$State = sanitise_input($State);
-$Postcode = sanitise_input($Postcode);
-$Email_Address = sanitise_input($Email_Address);
-$Phone_Number = sanitise_input($Phone_Number);
-$OtherSkills = sanitise_input($OtherSkills);
+$stat = 'New';
+
 
 // Makes sure all the required fields are filled; otherwise, display error message
 if (empty($Job_Reference)) {
@@ -153,7 +152,7 @@ if (empty($Last_Name)) {
 if (empty($dob)) {
     $errMsg .= "<p>You must enter your date of birth.</p>";
 } else {
-    $dobDateTime = DateTime::createFromFormat('Y-m-d', $dob);
+    $dobDateTime = DateTime::createFromFormat('d/m/Y', $dob);
     if (!$dobDateTime) {
         $errMsg .= "<p>You must enter the date of birth in the correct format: YYYY-MM-DD.</p>";
     } else {
@@ -170,7 +169,7 @@ if (empty($Gender)) {
     $errMsg .= "<p>Gender is required.</p>";
 } else {
     //This ensures Radio input has a value, you can proceed with further processing
-    $selectedGender = $_POST['Gender'];
+    $selectedGender = $_POST['gender'];
 }
 
 
@@ -234,8 +233,8 @@ if (empty($Phone_Number)) {
     $errMsg .= "<p>You must enter a valid phone number (10 digits, no spaces or special characters).</p>";
 }
 
-if (isset($_POST["OtherSkills"])) {
-    $OtherSkills = sanitise_input($_POST["OtherSkills"]);
+if (isset($_POST["other_skills"])) {
+    $OtherSkills = sanitise_input($_POST["other_skills"]);
     if (!preg_match("/^[a-zA-Z0-9\s]+$/", $OtherSkills)) {
         $errMsg .= "<p>Only alphanumeric characters and spaces are allowed in the Other Skills field.</p>";
     }
@@ -245,11 +244,11 @@ if (isset($_POST["OtherSkills"])) {
 
 // Create the EOI table if it doesn't exist
 $createTableQuery = "CREATE TABLE IF NOT EXISTS EOI (
-    `EOI_ID` INT AUTO_INCREMENT PRIMARY KEY,
+    EOI_ID INT AUTO_INCREMENT PRIMARY KEY,
     `Job_Reference` VARCHAR(20),
     `First_Name` VARCHAR(30),
     `Last_Name` VARCHAR(30),
-    `dob` DATE,
+    `dob` VARCHAR(30),
     `Gender` VARCHAR(10),
     `Street_Address` VARCHAR(100),
     `Suburb_Town` VARCHAR(50),
@@ -257,13 +256,15 @@ $createTableQuery = "CREATE TABLE IF NOT EXISTS EOI (
     `Postcode` VARCHAR(10),
     `Email_Address` VARCHAR(50),
     `Phone_Number` VARCHAR(20),
-    `OtherSkills` TEXT
+    `Skills` VARCHAR(255),
+    `OtherSkills` TEXT,
+    Status ENUM('New', 'Current', 'Final') DEFAULT 'New'
+
 )";
 
 // Execute the table creation query
 mysqli_query($conn, $createTableQuery);
 
-// Prepare the insert statement
 $insertQuery = "INSERT INTO EOI (
     Job_Reference,
     First_Name,
@@ -276,57 +277,37 @@ $insertQuery = "INSERT INTO EOI (
     Postcode,
     Email_Address,
     Phone_Number,
+    Skills,
     OtherSkills
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+) VALUES (
+    '$Job_Reference',
+    '$First_Name',
+    '$Last_Name',
+    '$dob',
+    '$Gender',
+    '$Street_Address',
+    '$Suburb_Town',
+    '$State',
+    '$Postcode',
+    '$Email_Address',
+    '$Phone_Number',
+    '$Skills',
+    '$OtherSkills'
+    
+    
+    )";
 
-// Create a prepared statement
-$stmt = mysqli_stmt_init($conn);
 
-// Check if the prepared statement could be initialized
-if (!mysqli_stmt_prepare($stmt, $insertQuery)) {
-    echo "<h2>Error</h2>";
-    echo "<p>Failed to prepare statement.</p>";
-    exit;
-}
 
-// Bind the parameters to the prepared statement
-mysqli_stmt_bind_param(
-    $stmt,
-    "ssssssssssss",
-    $Job_Reference,
-    $First_Name,
-    $Last_Name,
-    $dob,
-    $Gender,
-    $Street_Address,
-    $Suburb_Town,
-    $State,
-    $Postcode,
-    $Email_Address,
-    $Phone_Number,
-    $OtherSkills
-);
 
-// Execute the prepared statement
-if (!mysqli_stmt_execute($stmt)) {
-    echo "<h2>Error</h2>";
-    echo "<p>Failed to insert record.</p>";
-    echo "<p>Error message: " . mysqli_error($conn) . "</p>"; // Display the specific error message from MySQL
-    exit;
-}
+$result = mysqli_query($conn, $insertQuery);	
+    if (!$result){		
+        echo "<p>Something is wrong with ", $insertQuery, "</p>";
+    } else {		
+        echo "<p\">Successfully added new Applicant record</p>";
 
-// Store the auto-generated EOI number
- $EOI_ID = mysqli_insert_id($conn);
-
-// Close the prepared statement
-mysqli_stmt_close($stmt);
-
-// Display success message
-echo "<h2>Success</h2>";
-echo "<p>EOI record has been submitted successfully.Your EOI id is $EOI_ID</p>";
-
-// Close the database connection
-mysqli_close($conn);
+    }
+    mysqli_close($conn);
 ?>
 </body>
 </html>

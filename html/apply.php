@@ -67,8 +67,8 @@
         <input type="text" name="town" id="town" required="required" maxlength="40" size="40">
         </p>
         
-        <p><label for="tutor" class="form-font">State</label>
-            <select required="required" name="tutor" class="state_choice" id="tutor">
+        <p><label for="state" class="form-font">State</label>
+            <select required="required" name="state" class="state_choice" id="tutor">
             <option class= "state_choice" value="" disabled hidden selected>Please select a choice</option>
             <option class="state_choice" value="VIC">VIC</option>
             <option class="state_choice" value="NSW">NSW</option>

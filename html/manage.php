@@ -76,7 +76,7 @@
     }
     // Perform the requested query
 	if ($query == "list_all") {
-		$sql = "SELECT * FROM EOI";
+		$sql = "SELECT * FRO	M EOI";
 	} elseif ($query == "list_by_position") {
 		if (isset($_GET["Job_Reference"])) {
 			$jobReference = sanitizeInput($_GET["Job_Reference"]);
