@@ -1,6 +1,6 @@
 <!-- menu-bar -->
         <header class="menu">
-            <a href="index.html" class="logo"><img src="../images/ava2-removebg-preview.png" alt="smarthouse logo"></a>
+            <a href="index.php" class="logo"><img src="../images/ava2-removebg-preview.png" alt="smarthouse logo"></a>
             <nav class="nav-bar">
                 <a href="./index.php">Home</a>
                 <a href="./about.php">About Us</a>
@@ -165,9 +165,9 @@
                 <div class="col" id="index_links">
                     <h3>Links<div class="underline"></div></h3>
                     <ol class="index_links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="jobs.html">Job Description</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="jobs.php">Job Description</a></li>
                     </ol>
                 </div>
                 <div class="col">

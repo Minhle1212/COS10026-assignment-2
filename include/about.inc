@@ -1,5 +1,5 @@
  <header class="menu">
-            <a href="index.html" class="logo"><img src="../images/ava2-removebg-preview.png" alt="logo"></a>
+            <a href="index.php" class="logo"><img src="../images/ava2-removebg-preview.png" alt="logo"></a>
             <nav class="nav-bar">
                 <a href="./index.php">Home</a>
                 <a href="./about.php">About Us</a>
@@ -30,10 +30,10 @@
                 <h2 class="about_title">Learn more</h2>
                 <div class="about_links">
                     <div class="about_links_box">
-                        <a href="team.html">
+                        <a href="team.php">
                             <img src="../images/team.jpg" alt="Team" class="about_image">
                         </a>
-                        <a href="team.html" class="about_links_head">The Team</a>
+                        <a href="team.php" class="about_links_head">The Team</a>
                         <p class="about_links_desc">Find out more about us</p>
                     </div>
                     <div class="about_links_box">
@@ -44,10 +44,10 @@
                         <p class="about_links_desc">Our accomplishments throughout the years</p>
                     </div>
                     <div class="about_links_box">
-                        <a href="jobs.html">
+                        <a href="jobs.php">
                             <img src="../images/hiring.png" alt="Application" class="about_image">
                         </a>
-                        <a href="jobs.html" class="about_links_head">Work for us</a>
+                        <a href="jobs.php" class="about_links_head">Work for us</a>
                         <p class="about_links_desc">We are always looking for new talents</p>
                     </div>
                 </div>
@@ -68,9 +68,9 @@
                 <div class="col" id="index_links">
                     <h3>Links<div class="underline"></div></h3>
                     <ol class="index_links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="jobs.html">Job Description</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="jobs.php">Job Description</a></li>
                     </ol>
                 </div>
                 <div class="col">

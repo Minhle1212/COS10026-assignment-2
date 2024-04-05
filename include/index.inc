@@ -1,7 +1,7 @@
 
     <!-- menu-bar -->
     <header class="menu">
-        <a href="index.html" class="logo"><img src="../images/ava2-removebg-preview.png" alt="logo"></a>
+        <a href="index.php" class="logo"><img src="../images/ava2-removebg-preview.png" alt="logo"></a>
         <nav class="nav-bar">
             <a href="./index.php">Home</a>
             <a href="./about.php">About Us</a>
@@ -123,7 +123,7 @@
             <br> Apply now!
         </h2>
         <div class="join">
-            <a href="jobs.html"><button>Job Application</button></a>
+            <a href="jobs.php"><button>Job Application</button></a>
         </div>
     </nav>
 
@@ -143,9 +143,9 @@
             <div class="col" id="index_links">
                 <h3>Links<div class="underline"></div></h3>
                 <ol class="index_links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="jobs.html">Job Description</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="jobs.php">Job Description</a></li>
                 </ol>
             </div>
             <div class="col">

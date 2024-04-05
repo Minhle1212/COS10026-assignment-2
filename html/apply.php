@@ -152,15 +152,12 @@
     </div> 
 
 
-
-
-    
     </fieldset>
  
 </form> 
 </div>
 
-    <form action="jobs.html">
+    <form action="jobs.php">
         <button class="back_button" type="submit" >Back to Job Lists</button>
     </form>
 </body>

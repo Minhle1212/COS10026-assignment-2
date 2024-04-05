@@ -1,6 +1,5 @@
-
-        <header class="menu">
-            <a href="index.html" class="logo"><img src="../images/ava2-removebg-preview.png" alt="logo"></a>
+         <header class="menu">
+            <a href="index.php" class="logo"><img src="../images/ava2-removebg-preview.png" alt="logo"></a>
             <nav class="nav-bar">
                 <a href="./index.php">Home</a>
                 <a href="./about.php">About Us</a>
@@ -70,7 +69,7 @@
                                 <li>Employees are eligible for an annual discretionary bonus, and benefits including heath care, leave benefits, and retirement benefits.</li> 
                             </ol>
                             <h4>Applicants please fill this application form and report to Vice Chancellor of HRM</h4>
-                            <a href="apply.html">Link to form</a>
+                            <a href="apply.php">Link to form</a>
                         </div>
                     </aside>
                 </div>
@@ -93,7 +92,7 @@
                             <h4>Essentials</h4>
                             <ul class="jobs_ul" id="essential">
                                 <li>5 years of experience as a Software Engineering, Software Development Engineer, Software Engineer, or related role.</li>
-                                <li>Experience with: Data structures and algorithms; Applying design patterns,Angular, Spring, SQL, JavaScript, HTML5, and CSS3. </li>
+                                <li>Experience with: Data structures and algorithms; Applying design patterns,Angular, Spring, SQL, JavaScript, php5, and CSS3. </li>
                                 <li>Hands-on experience with building distributed systems and storage technologies such as Cassandra, Redis, and relational database.</li>
                             </ul>
                             <h4>Preferable</h4>
@@ -117,7 +116,7 @@
                                 <li>Employees are eligible for an annual discretionary bonus, and benefits including heath care, leave benefits, and retirement benefits.</li> 
                             </ol>
                             <h4>Applicants please fill this application form and report to Vice Chancellor of HRM</h4>
-                            <a href="apply.html">Link to form</a>
+                            <a href="apply.php">Link to form</a>
                         </div>
                     </aside>
                 </div>
@@ -140,9 +139,9 @@
                 <div class="col" id="index_links">
                     <h3>Links<div class="underline"></div></h3>
                     <ol class="index_links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="jobs.html">Job Description</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="jobs.php">Job Description</a></li>
                     </ol>
                 </div>
                 <div class="col">
