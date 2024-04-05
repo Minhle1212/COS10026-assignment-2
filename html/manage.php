@@ -74,7 +74,8 @@
         $input = htmlspecialchars($input); // Convert special characters to HTML entities
         return $input;
     }
-    // Perform the requested query
+    if (isset($_GET['action'])) {
+		$query = sanitizeInput($_GET['action']);
 	if ($query == "list_all") {
 		$sql = "SELECT * FROM EOI";
 	} elseif ($query == "list_by_position") {
@@ -125,6 +126,7 @@
 			exit();
 		}
 	}
+}
 
 
 	 // Execute the query
