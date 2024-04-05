@@ -126,12 +126,8 @@
 			exit();
 		}
 	}
-<<<<<<< HEAD
-	
-=======
 
 	$sql = "SELECT * FROM EOI";
->>>>>>> 44937c8cc9ab26e28d99572a103faf325641d5c6
 	// Execute the query
 	$result = mysqli_query($conn, $sql);
 
