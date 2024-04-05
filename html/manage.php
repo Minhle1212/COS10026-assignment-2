@@ -126,7 +126,7 @@
 			exit();
 		}
 	}
-
+	
 	// Execute the query
 	$result = mysqli_query($conn, $sql);
 
