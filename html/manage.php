@@ -52,7 +52,11 @@
 			<input type="text" name="eoi_number" id="eoi_number">
 			<br>
 			<label for="status">Status:</label>
-			<input type="text" name="status" id="status">
+			<select name="status" id="status">
+				<option value="New"></option>
+				<option value="Current"></option>
+				<option value="Final"></option>
+			</select>
 			<br>
 			<input type="submit" value="CHANGE">
 		</form>
