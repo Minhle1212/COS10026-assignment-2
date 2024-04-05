@@ -76,7 +76,7 @@
     }
     // Perform the requested query
 	if ($query == "list_all") {
-		$sql = "SELECT * FROM eoi";
+		$sql = "SELECT * FROM EOI";
 	} elseif ($query == "list_by_position") {
 		if (isset($_GET["Job_Reference"])) {
 			$jobReference = sanitizeInput($_GET["Job_Reference"]);
@@ -88,7 +88,7 @@
 		if (isset($_GET["First_Name"]) && isset($_GET["Last_Name"])) {
 			$firstName = sanitizeInput($_GET["First_Name"]);
 			$lastName = sanitizeInput($_GET["Last_Name"]);
-			$sql = "SELECT * FROM eoi WHERE First_Name = '$firstName' AND Last_Name = '$lastName'";
+			$sql = "SELECT * FROM EOI WHERE First_Name = '$firstName' AND Last_Name = '$lastName'";
 		} else {
 			// Redirect to an error page if the first name or last name is not provided
 			echo"Can not find this position";
