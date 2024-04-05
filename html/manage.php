@@ -126,56 +126,104 @@
 			exit();
 		}
 	}
+
+	// Execute the query
+	$result = mysqli_query($conn, $sql);
+
+	if ($result) {
+		// Display the results in a table format
+		echo "<table>
+				<tr>
+				<th>EOInumber</th>
+				<th>Job Reference</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Date of Birth</th>
+				<th>Gender</th>
+				<th>Street Address</th>
+				<th>Postcode</th>
+				<th>Email Address</th>
+				<th>Phone Number</th>
+				<th>Skills</th>
+				<th>Other skills</th>
+				<th>Status</th>    
+				</tr>";
+
+		while ($row = mysqli_fetch_assoc($result)) {
+			echo "<tr>
+			<td>" . $row["EOI_ID"] . "</td>
+			<td>" . $row["Job_Reference"] . "</td>
+			<td>" . $row["First_Name"] . "</td>
+			<td>" . $row["Last_Name"] . "</td>
+			<td>" . $row["dob"] . "</td>
+			<td>" . $row["Gender"] . "</td>
+			<td>" . $row["Street_Address"] . "</td>
+			<td>" . $row["Postcode"] . "</td>
+			<td>" . $row["Email_Address"] . "</td>
+			<td>" . $row["Phone_Number"] . "</td>
+			<td>" . $row["Skills"] . "</td>
+			<td>" . $row["OtherSkills"] . "</td>	
+			<td>" . $row["Status"] . "</td>
+				</tr>";
+		}
+
+		echo "</table>";
+
+		// Free the result set
+		mysqli_free_result($result);
+	} else {
+		echo "Error: " . mysqli_error($conn);
+	}
 }
 
 
-	 // Execute the query
-	 $result = mysqli_query($conn, $sql);
+	
+	//  $result = mysqli_query($conn, $sql);
 
-	 if ($result) {
-		 // Display the results in a table format
-		 echo "<table>
-				 <tr>
-				 <th>EOInumber</th>
-				 <th>Job Reference</th>
-				 <th>First Name</th>
-				 <th>Last Name</th>
-				 <th>Date of Birth</th>
-				 <th>Gender</th>
-				 <th>Street Address</th>
-				 <th>Postcode</th>
-				 <th>Email Address</th>
-				 <th>Phone Number</th>
-				 <th>Skills</th>
-				 <th>Other skills</th>
-				 <th>Status</th>    
-				 </tr>";
+	//  if ($result) {
+		 
+	// 	 echo "<table>
+	// 			 <tr>
+	// 			 <th>EOInumber</th>
+	// 			 <th>Job Reference</th>
+	// 			 <th>First Name</th>
+	// 			 <th>Last Name</th>
+	// 			 <th>Date of Birth</th>
+	// 			 <th>Gender</th>
+	// 			 <th>Street Address</th>
+	// 			 <th>Postcode</th>
+	// 			 <th>Email Address</th>
+	// 			 <th>Phone Number</th>
+	// 			 <th>Skills</th>
+	// 			 <th>Other skills</th>
+	// 			 <th>Status</th>    
+	// 			 </tr>";
 
-		 while ($row = mysqli_fetch_assoc($result)) {
-			 echo "<tr>
-			 <td>" . $row["EOI_ID"] . "</td>
-			 <td>" . $row["Job_Reference"] . "</td>
-			 <td>" . $row["First_Name"] . "</td>
-			 <td>" . $row["Last_Name"] . "</td>
-			 <td>" . $row["dob"] . "</td>
-			 <td>" . $row["Gender"] . "</td>
-			 <td>" . $row["Street_Address"] . "</td>
-			 <td>" . $row["Postcode"] . "</td>
-			 <td>" . $row["Email_Address"] . "</td>
-			 <td>" . $row["Phone_Number"] . "</td>
-			 <td>" . $row["Skills"] . "</td>
-			 <td>" . $row["OtherSkills"] . "</td>	
-			 <td>" . $row["Status"] . "</td>
-				 </tr>";
-		 }
+	// 	 while ($row = mysqli_fetch_assoc($result)) {
+	// 		 echo "<tr>
+	// 		 <td>" . $row["EOI_ID"] . "</td>
+	// 		 <td>" . $row["Job_Reference"] . "</td>
+	// 		 <td>" . $row["First_Name"] . "</td>
+	// 		 <td>" . $row["Last_Name"] . "</td>
+	// 		 <td>" . $row["dob"] . "</td>
+	// 		 <td>" . $row["Gender"] . "</td>
+	// 		 <td>" . $row["Street_Address"] . "</td>
+	// 		 <td>" . $row["Postcode"] . "</td>
+	// 		 <td>" . $row["Email_Address"] . "</td>
+	// 		 <td>" . $row["Phone_Number"] . "</td>
+	// 		 <td>" . $row["Skills"] . "</td>
+	// 		 <td>" . $row["OtherSkills"] . "</td>	
+	// 		 <td>" . $row["Status"] . "</td>
+	// 			 </tr>";
+	// 	 }
 
-		 echo "</table>";
+	// 	 echo "</table>";
 
-		 // Free the result set
-		 mysqli_free_result($result);
-	 } else {
-		 echo "Error: " . mysqli_error($conn);
-	 }
+		 
+	// 	 mysqli_free_result($result);
+	//  } else {
+	// 	 echo "Error: " . mysqli_error($conn);
+	//  }
  
 
  // Close the database connection
