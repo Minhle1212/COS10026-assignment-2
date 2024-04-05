@@ -77,7 +77,7 @@
     if (isset($_GET['action'])) { 
 		$query = sanitizeInput($_GET['action']);
 	if ($query == "list_all") {
-		$sql = "SELECT * FRO	M EOI";
+		$sql = "SELECT * FROM EOI";
 	} elseif ($query == "list_by_position") {
 		if (isset($_GET["Job_Reference"])) {
 			$jobReference = sanitizeInput($_GET["Job_Reference"]);
