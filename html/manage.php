@@ -74,7 +74,7 @@
         $input = htmlspecialchars($input); // Convert special characters to HTML entities
         return $input;
     }
-    if (isset($_GET['action'])) {
+    if (isset($_GET['action'])) { 
 		$query = sanitizeInput($_GET['action']);
 	if ($query == "list_all") {
 		$sql = "SELECT * FROM EOI";
