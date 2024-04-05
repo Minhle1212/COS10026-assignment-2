@@ -113,7 +113,7 @@
 			exit();
 		}
 	} elseif ($query == "change_status") {
-		if (isset($_GET["EOI_ID"]) && isset($_GET["Status"])) {
+		if (isset($_GET["eoi_number"]) && isset($_GET["status"])) {
 			$eoiID = sanitizeInput($_GET["eoi_number"]);
 			$status = sanitizeInput($_GET["status"]);
 			$sql = "UPDATE EOI SET Status = '$status' WHERE EOI_ID = $eoiID";
