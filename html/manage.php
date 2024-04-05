@@ -146,27 +146,25 @@
 				 <th>Postcode</th>
 				 <th>Email Address</th>
 				 <th>Phone Number</th>
-				 <th>Skill 01</th>
-				 <th>Skill 02</th>
-				 <th>Skill 03</th>
+				 <th>Skills</th>
+				 <th>Other skills</th>
 				 <th>Status</th>    
 				 </tr>";
 
 		 while ($row = mysqli_fetch_assoc($result)) {
 			 echo "<tr>
-			 <td>" . $row["EOInumber"] . "</td>
+			 <td>" . $row["EOI_ID"] . "</td>
 			 <td>" . $row["Job_Reference"] . "</td>
 			 <td>" . $row["First_Name"] . "</td>
 			 <td>" . $row["Last_Name"] . "</td>
-			 <td>" . $row["DOB"] . "</td>
+			 <td>" . $row["dob"] . "</td>
 			 <td>" . $row["Gender"] . "</td>
 			 <td>" . $row["Street_Address"] . "</td>
 			 <td>" . $row["Postcode"] . "</td>
 			 <td>" . $row["Email_Address"] . "</td>
 			 <td>" . $row["Phone_Number"] . "</td>
-			 <td>" . $row["Skill_01"] . "</td>
-			 <td>" . $row["Skill_02"] . "</td>
-			 <td>" . $row["Skill_03"] . "</td>
+			 <td>" . $row["Skills"] . "</td>
+			 <td>" . $row["OtherSkills"] . "</td>	
 			 <td>" . $row["Status"] . "</td>
 				 </tr>";
 		 }
