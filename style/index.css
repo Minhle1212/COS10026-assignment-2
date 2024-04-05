@@ -537,6 +537,10 @@ form button{
 
 .manage input[type='submit']:hover{
     cursor: pointer;
+    color: white;
+    background-color: #f74f10;
+    transition: 1s;
+    border: 3px solid white;
 }
 
 .manage input[type='text']{
@@ -562,6 +566,10 @@ form button{
     border: 5px solid #000000;
     padding: 5px;
     background-color: white;
+}
+
+.eoi_table th{
+    background-color: #adadad;
 }
 
 @keyframes animate{
