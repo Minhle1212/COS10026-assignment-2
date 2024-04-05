@@ -114,8 +114,8 @@
 		}
 	} elseif ($query == "change_status") {
 		if (isset($_GET["EOI_ID"]) && isset($_GET["Status"])) {
-			$eoiID = sanitizeInput($_GET["EOI_ID"]);
-			$status = sanitizeInput($_GET["Status"]);
+			$eoiID = sanitizeInput($_GET["eoi_number"]);
+			$status = sanitizeInput($_GET["status"]);
 			$sql = "UPDATE EOI SET Status = '$status' WHERE EOI_ID = $eoiID";
 			// Perform the status change operation
 			if (mysqli_query($conn, $sql)) {
