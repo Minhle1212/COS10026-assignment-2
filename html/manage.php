@@ -53,9 +53,9 @@
 			<br>
 			<label for="status">Status:</label>
 			<select name="status" id="status">
-				<option value="New"></option>
-				<option value="Current"></option>
-				<option value="Final"></option>
+				<option value="New">New</option>
+				<option value="Current">Current</option>
+				<option value="Final">Final</option>
 			</select>
 			<br>
 			<input type="submit" value="CHANGE">
