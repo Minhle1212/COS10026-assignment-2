@@ -1,4 +1,5 @@
-<div class="row">
+    <footer>
+        <div class="row">
             <div class="col" id="special-col">
                 <img src="../images/ava2-removebg-preview.png" class="logo" alt="logo">
             </div>
@@ -31,3 +32,4 @@
                 </div>
             </div>
         </div>
+    </footer>

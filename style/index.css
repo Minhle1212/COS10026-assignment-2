@@ -477,6 +477,92 @@ form button{
     border-radius: 2px;
 }
 
+/* Login page */
+.login_page{
+    color: white;
+    margin: 20px 20% 0 20%;
+    padding: 20px;
+    background-color: #252525;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.login_page h1{
+    margin-bottom: 20px;
+}
+
+.login_page input{
+    background-color: white;
+    border: 3px solid black;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.login_page button{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    border: 3px solid black;
+    margin-bottom: 10px;
+    width: fit-content;
+    padding: 5px;
+}
+
+/* Manage page */
+.manage, .eoiUpdate{
+    color: white;
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+.manage_head{
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.manage h2{
+    margin-bottom: 10px;
+}
+
+.manage input[type='submit']{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    border: 3px solid black;
+    margin-bottom: 10px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.manage input[type='submit']:hover{
+    cursor: pointer;
+}
+
+.manage input[type='text']{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.manage select{
+    margin-bottom: 10px;
+}
+
+.eoi_table{
+    color: black;
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+    width: 90%;
+}
+
+.eoi_table th, .eoi_table td{
+    border: 5px solid #000000;
+    padding: 5px;
+    background-color: white;
+}
 
 @keyframes animate{
     0%{
@@ -931,35 +1017,35 @@ dd a:hover{
     align-items: center;
 }
 
-.table{
+.timetable{
     text-align: center;
     border-collapse: collapse;
     margin: auto;
     width: 80%;
 }
 
-td, th{
+.timetable td, .timetable th{
     border: 5px solid #000000;
 }
 
-th{
+.timetable th{
     background-color: #2c3037;
 }
 
-td{
+.timetable td{
     background-color: #202530;
 }
 
-td:hover, th:hover{
+.timetable td:hover, .timetable th:hover{
     background-color: #f74f10;
     transition: .5s;
 }
 
-.table tr{
+.timetable tr{
     height: 75px;
 }
 
-.table th{
+.timetable th{
     width: 12.5%;
     font-size: 125%;
 }
@@ -1023,7 +1109,7 @@ td:hover, th:hover{
         overflow: scroll;
     }
 
-    .table{
+    .timetable{
         width: 1000px;
     }
 }
@@ -1157,7 +1243,7 @@ aside a:hover {
     text-align: center;
 }
 
-form {
+footer form {
     width: 613px;
 }
 

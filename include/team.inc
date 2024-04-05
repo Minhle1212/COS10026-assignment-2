@@ -1,13 +1,14 @@
 <!-- menu-bar -->
         <header class="menu">
-            <a href="index.php" class="logo"><img src="../images/ava2-removebg-preview.png" alt="smarthouse logo"></a>
+            <a href="index.php" class="logo"><img src="../images/ava2-removebg-preview.png" alt="logo"></a>
             <nav class="nav-bar">
                 <a href="./index.php">Home</a>
                 <a href="./about.php">About Us</a>
                 <a href="./jobs.php">Application</a>
+                <a href="./manage.php">Manage</a>
             </nav>
             <div class="login">
-                <a href="">Login</a>
+                <a href="login.php">Login</a>
             </div>
         </header>
 
@@ -104,7 +105,7 @@
             <!--Timetable-->
             <h1 class="about_header">Our timetable</h1>
             <div class="schedule">
-                <table class="table">
+                <table class="timetable">
                     <tr>
                         <th>Time</th>
                         <th>Monday</th>

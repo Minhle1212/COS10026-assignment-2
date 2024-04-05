@@ -6,10 +6,10 @@
             <a href="./index.php">Home</a>
             <a href="./about.php">About Us</a>
             <a href="./jobs.php">Application</a>
-            <a href="./manage.php">manage</a>
+            <a href="./manage.php">Manage</a>
         </nav>
         <div class="login">
-            <a href="">Login</a>
+            <a href="login.php">Login</a>
         </div>
     </header>
 

@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/142309adca.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans:wght@600&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Document</title>
-    <link rel="stylesheet" href="../style/manage.css">
-
 </head>
 <body>
-	
+	<?php
+	include("../include/nav-bar.inc");
+	?>
+	<h1 class='manage_head'>EOI Management</h1>
 	<div class="manage">
-		<h1>EOI Management</h1>
 		<h2>List All EOIs</h2>
 		<form action="manage.php" method="GET"> 
 			<input type="hidden" name="action" value="list_all"> 
@@ -21,7 +26,7 @@
 		<form action="manage.php" method="GET" class="position-form">
 			<input type="hidden" name="action" value="list_by_position">
 			<label for="Job_Reference">Job Reference:</label>
-			<input type="text" name="Job_Reference" id="Job_Reference">
+			<input type="text" name="Job_Reference" id="Job_Reference"><br>
 			<input type="submit" value="SUBMIT">
 		</form>
 		<hr>
@@ -41,7 +46,7 @@
 		<form action="manage.php" method="GET">
 			<input type="hidden" name="action" value="delete_by_position">
 			<label for="Job_Reference_delete">Job Reference:</label>
-			<input type="text" name="Job_Reference" id="Job_Reference_delete">
+			<input type="text" name="Job_Reference" id="Job_Reference_delete"><br>
 			<input type="submit" value="DELETE">
 		</form>
 		<hr>
@@ -123,7 +128,7 @@
 			$sql = "UPDATE EOI SET Status = '$status' WHERE EOI_ID = $eoiID";
 			// Perform the status change operation
 			if (mysqli_query($conn, $sql)) {
-				echo "EOI with EOInumber '$eoiID' has been updated successfully.";
+				echo "<p class='eoiUpdate'>EOI with EOI number '$eoiID' has been updated successfully.</p>";
 			} else {
 				echo "Error: " . mysqli_error($conn);
 			}
@@ -137,7 +142,7 @@
 
 	if ($result) {
 		// Display the results in a table format
-		echo "<table>
+		echo "<table class='eoi_table'>
 				<tr>
 				<th>EOInumber</th>
 				<th>Job Reference</th>
