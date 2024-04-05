@@ -76,7 +76,7 @@
     }
     // Perform the requested query
 	if ($query == "list_all") {
-		$sql = "SELECT * FROM EOI";
+		$sql = "SELECT * FROM eoi";
 	} elseif ($query == "list_by_position") {
 		if (isset($_GET["Job_Reference"])) {
 			$jobReference = sanitizeInput($_GET["Job_Reference"]);
@@ -88,13 +88,96 @@
 		if (isset($_GET["First_Name"]) && isset($_GET["Last_Name"])) {
 			$firstName = sanitizeInput($_GET["First_Name"]);
 			$lastName = sanitizeInput($_GET["Last_Name"]);
-			$sql = "SELECT * FROM EOI WHERE First_Name = '$firstName' AND Last_Name = '$lastName'";
+			$sql = "SELECT * FROM eoi WHERE First_Name = '$firstName' AND Last_Name = '$lastName'";
 		} else {
 			// Redirect to an error page if the first name or last name is not provided
-			header("Location: error.php");
+			echo"Can not find this position";
 			exit();
 		}
+	} elseif ($query == "delete_by_position") {
+		if (isset($_GET["Job_Reference"])) {
+			$jobReference = sanitizeInput($_GET["Job_Reference"]);
+			$sql = "DELETE FROM EOI WHERE Job_Reference = '$jobReference'";
+			if (mysqli_query($conn, $sql)) {
+				echo "EOIs with job reference '$jobReference' have been deleted successfully.";
+			// Reset the EOInumber
+			 $resetSql = "ALTER TABLE EOI AUTO_INCREMENT = 1";
+			 mysqli_query($conn, $resetSql);
+			} else {
+				echo "Error: " . mysqli_error($conn);
+			}
+			exit();
+		} else{
+			echo"Can not find this position";
+			exit();
+		}
+	} elseif ($query == "change_status") {
+		if (isset($_GET["eoi_number"]) && isset($_GET["status"])) {
+			$eoiNumber = sanitizeInput($_GET["eoi_number"]);
+			$status = sanitizeInput($_GET["status"]);
+			$sql = "UPDATE EOI SET Status = '$status' WHERE EOInumber = $eoiNumber";
+			// Perform the status change operation
+			if (mysqli_query($conn, $sql)) {
+				echo "EOI with EOInumber '$eoiNumber' has been updated successfully.";
+			} else {
+				echo "Error: " . mysqli_error($conn);
+			}
+			exit();
+		}
+	} 
+	 // Execute the query
+	 $result = mysqli_query($conn, $sql);
+	 if ($result) {
+		// Display the results in a table format
+		echo "<table>
+				<tr>
+				<th>EOInumber</th>
+				<th>Job Reference</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Date of Birth</th>
+				<th>Gender</th>
+				<th>Street Address</th>
+				<th>Suburb Town</th>
+				<th>State</th>
+				<th>Postcode</th>
+				<th>Email Address</th>
+				<th>Phone Number</th>
+				<th>Skill 01</th>
+				<th>Skill 02</th>
+				<th>Skill 03</th>
+				<th>Status</th>    
+				</tr>";
+
+		while ($row = mysqli_fetch_assoc($result)) {
+			echo "<tr>
+			<td>" . $row["EOInumber"] . "</td>
+			<td>" . $row["Job_Reference"] . "</td>
+			<td>" . $row["First_Name"] . "</td>
+			<td>" . $row["Last_Name"] . "</td>
+			<td>" . $row["DOB"] . "</td>
+			<td>" . $row["Gender"] . "</td>
+			<td>" . $row["Street_Address"] . "</td>
+			<td>" . $row["Suburb_Town"] . "</td>
+			<td>" . $row["State"] . "</td>
+			<td>" . $row["Postcode"] . "</td>
+			<td>" . $row["Email_Address"] . "</td>
+			<td>" . $row["Phone_Number"] . "</td>
+			<td>" . $row["Skill_01"] . "</td>
+			<td>" . $row["Skill_02"] . "</td>
+			<td>" . $row["Skill_03"] . "</td>
+			<td>" . $row["Status"] . "</td>
+				</tr>";
+		}
+
+		echo "</table>";
+
+		// Free the result set
+		mysqli_free_result($result);
+	} else {
+		echo "Error: " . mysqli_error($conn);
 	}
+}
 
 
 	?>
