@@ -127,6 +127,61 @@
 	}
 
 
+	 // Execute the query
+	 $result = mysqli_query($conn, $sql);
+
+	 if ($result) {
+		 // Display the results in a table format
+		 echo "<table>
+				 <tr>
+				 <th>EOInumber</th>
+				 <th>Job Reference</th>
+				 <th>First Name</th>
+				 <th>Last Name</th>
+				 <th>Date of Birth</th>
+				 <th>Gender</th>
+				 <th>Street Address</th>
+				 <th>Postcode</th>
+				 <th>Email Address</th>
+				 <th>Phone Number</th>
+				 <th>Skill 01</th>
+				 <th>Skill 02</th>
+				 <th>Skill 03</th>
+				 <th>Status</th>    
+				 </tr>";
+
+		 while ($row = mysqli_fetch_assoc($result)) {
+			 echo "<tr>
+			 <td>" . $row["EOInumber"] . "</td>
+			 <td>" . $row["Job_Reference"] . "</td>
+			 <td>" . $row["First_Name"] . "</td>
+			 <td>" . $row["Last_Name"] . "</td>
+			 <td>" . $row["DOB"] . "</td>
+			 <td>" . $row["Gender"] . "</td>
+			 <td>" . $row["Street_Address"] . "</td>
+			 <td>" . $row["Postcode"] . "</td>
+			 <td>" . $row["Email_Address"] . "</td>
+			 <td>" . $row["Phone_Number"] . "</td>
+			 <td>" . $row["Skill_01"] . "</td>
+			 <td>" . $row["Skill_02"] . "</td>
+			 <td>" . $row["Skill_03"] . "</td>
+			 <td>" . $row["Status"] . "</td>
+				 </tr>";
+		 }
+
+		 echo "</table>";
+
+		 // Free the result set
+		 mysqli_free_result($result);
+	 } else {
+		 echo "Error: " . mysqli_error($conn);
+	 }
+ 
+
+ // Close the database connection
+ mysqli_close($conn);
+
+
 ?>
 
 	<?php
