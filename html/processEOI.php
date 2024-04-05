@@ -126,7 +126,6 @@ if (isset($_POST["OtherSkills"])) {
     $OtherSkills = "";
 }
 
-$stat = 'New';
 
 
 // Makes sure all the required fields are filled; otherwise, display error message
