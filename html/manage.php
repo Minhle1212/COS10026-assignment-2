@@ -13,7 +13,7 @@
 <body>
 	<?php
 	 
-	 include ("../include/header.inc");
+	include ("../include/header.inc");
  
 	?>
 	<h1 class='manage_head'>EOI Management</h1>
@@ -67,6 +67,8 @@
 			<br>
 			<input type="submit" value="CHANGE">
 		</form>
+
+		<h2><a href='logout.php'>Logout</a></h2>
 	</div>
 
 	<?php
