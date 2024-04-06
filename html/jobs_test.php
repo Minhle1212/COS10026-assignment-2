@@ -82,7 +82,8 @@
                                 ?>
                             </ul>
                         </div>
-                        <aside>
+                    </div>
+                    <aside>
                         <div class="job_reqs">
                             <h4>Job reference number</h4>
                             <p><?= $job['ref_num'] ?></p>
@@ -103,9 +104,10 @@
                         </div>
                     </aside>
                 </div>
-        <?php }
-            mysqli_close($conn);
-        } ?>
+            </section>
+            <?php }
+                mysqli_close($conn);
+            } ?>
         <?php include("../include/footer.inc");?>
     </body>
 </html>
