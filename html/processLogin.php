@@ -9,7 +9,7 @@
     <?php
      include ("settings.php");
      $conn = @mysqli_connect($host,$user, $pwd, $sql_db);
-     $table = "managers";
+     $table = "Manager";
      if (!$conn) {
          echo "<p>Database connection failed</p>";
      }
@@ -35,7 +35,7 @@
             if ($row["name"] === $name and $row["pwd"] === $pwd) {
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["name"] = $row["name"];
-                header("Location: manage.php");
+                header("Location: ../html/manage.php");
                 exit();
             }
             else {
