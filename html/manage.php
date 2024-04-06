@@ -68,7 +68,6 @@
 			<input type="submit" value="CHANGE">
 		</form>
 
-		<h2><a href='logout.php'>Logout</a></h2>
 	</div>
 
 	<?php
@@ -197,7 +196,7 @@
  
 
 ?>
-<a href="login.php"><h1>LOGOUT</h1></a>
+	<h2><a href='logout.php'>Logout</a></h2>
 
 	<?php
 	include_once("../include/footer.inc");

@@ -19,7 +19,7 @@
             <form action = "processLogin.php" method = "post">
                 <h1>Management Login</h1>
                 <?php if (isset($_GET['error'])) {
-                    echo $_GET['error'] . "</br>";
+                    echo $_GET['error'] . "Hellooooooo<br>";
                 }
                 ?>
                 <label>Username</label>

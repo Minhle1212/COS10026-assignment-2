@@ -1,7 +1,9 @@
 <?php
+    session_start();
+
     include ("settings.php");
     $conn = @mysqli_connect($host,$user, $pwd, $sql_db);
-    $table = "Manager";
+    $table = "managers";
     if (!$conn) {
         echo "<p>Database connection failed</p>";
     }
