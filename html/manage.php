@@ -158,7 +158,7 @@
 
         if ($result) {
             // Display the results in a table format
-            echo "<table>
+            echo "<table class='eoi_table'>
 				<tr>
 				<th>EOInumber</th>
 				<th>Job Reference</th>
