@@ -86,66 +86,79 @@
         $input = htmlspecialchars($input); // Convert special characters to HTML entities
         return $input;
     }
-    if (isset($_GET['action'])) { 
-		$query = sanitizeInput($_GET['action']);
-	if ($query == "list_all") {
-		$sql = "SELECT * FROM EOI";
-	} elseif ($query == "list_by_position") {
-		if (isset($_GET["Job_Reference"])) {
-			$jobReference = sanitizeInput($_GET["Job_Reference"]);
-			$sql = "SELECT * FROM EOI WHERE Job_Reference = '$jobReference'";
-		} else {
-			echo"Can not find this position";
-		}
-	} elseif ($query == "list_by_applicant") {
-		if (isset($_GET["First_Name"]) && isset($_GET["Last_Name"])) {
-			$firstName = sanitizeInput($_GET["First_Name"]);
-			$lastName = sanitizeInput($_GET["Last_Name"]);
-			$sql = "SELECT * FROM EOI WHERE First_Name = '$firstName' AND Last_Name = '$lastName'";
-		} else {
-			// Redirect to an error page if the first name or last name is not provided
-			echo"Can not find this position";
-			exit();
-		}
-	} elseif ($query == "delete_by_position") {
-		if (isset($_GET["Job_Reference"])) {
-			$jobReference = sanitizeInput($_GET["Job_Reference"]);
-			$sql = "DELETE FROM EOI WHERE Job_Reference = '$jobReference'";
-			if (mysqli_query($conn, $sql)) {
-				echo "EOIs with job reference '$jobReference' have been deleted successfully.";
-			// Reset the EOInumber
-			 $resetSql = "ALTER TABLE EOI AUTO_INCREMENT = 1";
-			 mysqli_query($conn, $resetSql);
-			} else {
-				echo "Error: " . mysqli_error($conn);
-			}
-			exit();
-		} else{
-			echo"Can not find this position";
-			exit();
-		}
-	} elseif ($query == "change_status") {
-		if (isset($_GET["eoi_number"]) && isset($_GET["status"])) {
-			$eoiID = sanitizeInput($_GET["eoi_number"]);
-			$status = sanitizeInput($_GET["status"]);
-			$sql = "UPDATE EOI SET Status = '$status' WHERE EOI_ID = $eoiID";
-			// Perform the status change operation
-			if (mysqli_query($conn, $sql)) {
-				echo "<p class='eoiUpdate'>EOI with EOI number '$eoiID' has been updated successfully.</p>";
-			} else {
-				echo "Error: " . mysqli_error($conn);
-			}
-			exit();
-		}
-	}
+    // Perform the requested query
+    if (isset($_GET['action'])) {
+        $query = sanitizeInput($_GET['action']);
 
-	$sql = "SELECT * FROM EOI";
-	// Execute the query
-	$result = mysqli_query($conn, $sql);
+        if ($query == "list_all") {
+            $sql = "SELECT * FROM EOI";
+        } elseif ($query == "list_by_position") {
+            if (isset($_GET["Job_Reference"])) {
+                $jobReference = sanitizeInput($_GET["Job_Reference"]);
+                $sql = "SELECT * FROM EOI WHERE Job_Reference = '$jobReference'";
+            } else {
+                // Redirect to an error page if the job reference is not provided
+                header("Location: error.php");
+                exit();
+            }
+        } elseif ($query == "list_by_applicant") {
+            if (isset($_GET["First_Name"]) && isset($_GET["Last_Name"])) {
+                $firstName = sanitizeInput($_GET["First_Name"]);
+                $lastName = sanitizeInput($_GET["Last_Name"]);
+                $sql = "SELECT * FROM EOI WHERE First_Name = '$firstName' AND Last_Name = '$lastName'";
+            } else {
+                // Redirect to an error page if the first name or last name is not provided
+                header("Location: error.php");
+                exit();
+            }
+        } elseif ($query == "delete_by_position") {
+            if (isset($_GET["Job_Reference"])) {
+                $jobReference = sanitizeInput($_GET["Job_Reference"]);
+                $sql = "DELETE FROM EOI WHERE Job_Reference = '$jobReference'";
+                // Perform the delete operation
+                if (mysqli_query($conn, $sql)) {
+                    echo "EOIs with job reference '$jobReference' have been deleted successfully.";
+                    // Reset the EOInumber
+                    $resetSql = "ALTER TABLE EOI AUTO_INCREMENT = 1";
+                    mysqli_query($conn, $resetSql);
+                } else {
+                    echo "Error: " . mysqli_error($conn);
+                }
+                exit();
+            } else {
+                // Redirect to an error page if the job reference is not provided
+                header("Location: error.php");
+                exit();
+            }
+        } elseif ($query == "change_status") {
+            if (isset($_GET["eoi_number"]) && isset($_GET["status"])) {
+                $eoiID = sanitizeInput($_GET["eoi_number"]);
+                $status = sanitizeInput($_GET["status"]);
+                $sql = "UPDATE EOI SET Status = '$status' WHERE EOI_ID = $eoiID";
+                // Perform the status change operation
+                if (mysqli_query($conn, $sql)) {
+                    echo "EOI with EOInumber '$eoiID' has been updated successfully.";
+                } else {
+                    echo "Error: " . mysqli_error($conn);
+                }
+                exit();
+            } else {
+                // Redirect to an error page if the EOInumber or status is not provided
+                header("Location: error.php");
+                exit();
+            }
+        } else {
+            // Redirect to an error page if an invalid query is requested
+            header("Location: error.php");
+            exit();
+        }
 
-	if ($result) {
-		// Display the results in a table format
-		echo "<table class='eoi_table'>
+        // Execute the query
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            // Display the results in a table format
+            echo "<table>
 				<tr>
 				<th>EOInumber</th>
 				<th>Job Reference</th>
@@ -162,8 +175,8 @@
 				<th>Status</th>    
 				</tr>";
 
-		while ($row = mysqli_fetch_assoc($result)) {
-			echo "<tr>
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>
 			<td>" . $row["EOI_ID"] . "</td>
 			<td>" . $row["Job_Reference"] . "</td>
 			<td>" . $row["First_Name"] . "</td>
@@ -178,23 +191,19 @@
 			<td>" . $row["OtherSkills"] . "</td>	
 			<td>" . $row["Status"] . "</td>
 				</tr>";
-		}
+            }
 
-		echo "</table>";
+            echo "</table>";
 
-		// Free the result set
-		mysqli_free_result($result);
-	} else {
-		echo "Error: " . mysqli_error($conn);
-	}
-}
- 
+            // Free the result set
+            mysqli_free_result($result);
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    }
 
- // Close the database connection
- mysqli_close($conn);
-
- 
-
+    // Close the database connection
+    mysqli_close($conn);
 ?>
 	<h2><a href='logout.php' class='logout'>Logout</a ></h2>
 
