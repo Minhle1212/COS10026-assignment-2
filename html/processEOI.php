@@ -120,8 +120,11 @@ if (isset($_POST["tech"])) {
 }
 
 
-if (isset($_POST["OtherSkills"])) {
-    $OtherSkills = sanitise_input($_POST["OtherSkills"]);
+if (isset($_POST["other_skills"])) {
+    $OtherSkills = sanitise_input($_POST["other_skills"]);
+    if (!preg_match("/^[a-zA-Z0-9\s]+$/", $OtherSkills)) {
+        $errMsg .= "<p>Only alphanumeric characters and spaces are allowed in the Other Skills field.</p>";
+    }
 } else {
     $OtherSkills = "";
 }
@@ -232,14 +235,7 @@ if (empty($Phone_Number)) {
     $errMsg .= "<p>You must enter a valid phone number (10 digits, no spaces or special characters).</p>";
 }
 
-if (isset($_POST["other_skills"])) {
-    $OtherSkills = sanitise_input($_POST["other_skills"]);
-    if (!preg_match("/^[a-zA-Z0-9\s]+$/", $OtherSkills)) {
-        $errMsg .= "<p>Only alphanumeric characters and spaces are allowed in the Other Skills field.</p>";
-    }
-} else {
-    $OtherSkills = "";
-}
+
 
 // Create the EOI table if it doesn't exist
 $createTableQuery = "CREATE TABLE IF NOT EXISTS EOI (
