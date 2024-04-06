@@ -13,7 +13,7 @@
 
     <body>
         <?php
-            include ("../include/nav-bar.inc");
+            include ("../include/header.inc");
         ?>
         <div class="login_page">
             <form action = "login.php" method = "post">
