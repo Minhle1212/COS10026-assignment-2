@@ -194,8 +194,10 @@
  // Close the database connection
  mysqli_close($conn);
 
+ 
 
 ?>
+<a href="login.php"><h1>LOGOUT</h1></a>
 
 	<?php
 	include_once("../include/footer.inc");
