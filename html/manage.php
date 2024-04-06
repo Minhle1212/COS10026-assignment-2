@@ -196,7 +196,7 @@
  
 
 ?>
-	<h2><a href='logout.php'>Logout</a></h2>
+	<h2><a href='logout.php' class='logout'>Logout</a ></h2>
 
 	<?php
 	include_once("../include/footer.inc");

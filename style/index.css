@@ -572,6 +572,16 @@ form button{
     background-color: #adadad;
 }
 
+.logout{
+    margin-left: 5%;
+    color: white;
+}
+
+.logout:hover{
+    color: #f74f10;
+    transition: 1s;
+}
+
 @keyframes animate{
     0%{
       width:0ch;
