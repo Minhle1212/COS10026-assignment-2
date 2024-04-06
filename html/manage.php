@@ -12,7 +12,9 @@
 </head>
 <body>
 	<?php
-	include("../include/nav-bar.inc");
+	 
+	 include ("../include/header.inc");
+ 
 	?>
 	<h1 class='manage_head'>EOI Management</h1>
 	<div class="manage">

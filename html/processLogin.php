@@ -35,7 +35,7 @@
             if ($row["name"] === $name and $row["pwd"] === $pwd) {
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["name"] = $row["name"];
-                header("Location: ../manage.php");
+                header("Location: manage.php");
                 exit();
             }
             else {
