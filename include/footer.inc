@@ -28,7 +28,7 @@
                     <button type="submit" class="fa-regular fa-paper-plane" aria-label="submit"></button>
                 </form>
                 <div class="social">
-                    <a class="fa-brands fa-youtube" href="https://youtu.be/EXyGv1s0cfk">Youtube video</a>
+                    <a class="fa-brands fa-youtube" href="https://www.youtube.com/watch?v=pxvY_PM4Qm4">Youtube video</a>
                 </div>
             </div>
         </div>
