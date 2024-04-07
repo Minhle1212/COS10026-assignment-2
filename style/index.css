@@ -582,6 +582,35 @@ form button{
     transition: 1s;
 }
 
+/* Enhancements page */
+.enhancements_page{
+    text-align: center;
+    color: white;
+    margin: 20px 20% 0px 20%;
+}
+
+.enhancements{
+    text-align: left;
+    margin-top: 20px;
+}
+
+.enhancements a{
+    color: white;
+}
+
+.enhancements a:hover{
+    color: #f74f10;
+}
+
+.enhancements img{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.enhancements figcaption{
+    text-align: center;
+}
+    
 @keyframes animate{
     0%{
       width:0ch;

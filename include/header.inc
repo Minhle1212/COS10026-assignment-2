@@ -4,6 +4,7 @@
         <a href="./index.php">Home</a>
         <a href="./about.php">About Us</a>
         <a href="./jobs.php">Application</a>
+        <a href="./phpenhancements.php">Enhancements</a>
     </nav>
     <div class="login">
         <a href="login.php">Login</a>
