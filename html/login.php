@@ -18,6 +18,8 @@
         <div class="login_page">
             <form action = "processLogin.php" method = "post">
                 <h1>Management Login</h1>
+                <p>Username: s104814221<p>
+                <p>Password: 070205<p>
                 <?php if (isset($_GET['error'])) {
                     echo $_GET['error'] . "Wrong username or password<br>";
                 }
