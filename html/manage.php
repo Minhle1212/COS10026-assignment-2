@@ -34,7 +34,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
 			<input type="hidden" name="action" value="list_by_position">
 			<label for="Job_Reference">Job Reference:</label>
 			<input type="text" name="Job_Reference" id="Job_Reference"><br>
-			<input type="submit" value="SUBMIT">
+			<input type="submit" value="Search">
 		</form>
 		<hr>
 		<h2>List EOIs For A Particular Applicant</h2>
@@ -46,7 +46,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
 			<label for="Last_Name">Last Name:</label>
 			<input type="text" name="Last_Name" id="Last_Name">
 			<br>
-			<input type="submit" value="SUBMIT">
+			<input type="submit" value="Search">
 		</form>
 		<hr>
 		<h2>Delete EOIs With A Specified Job Reference Number</h2>
@@ -102,8 +102,6 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
                 $jobReference = sanitizeInput($_GET["Job_Reference"]);
                 $sql = "SELECT * FROM EOI WHERE Job_Reference = '$jobReference'";
             } else {
-                // Redirect to an error page if the job reference is not provided
-                header("Location: error.php");
                 exit();
             }
         } elseif ($query == "list_by_applicant") {
@@ -112,18 +110,14 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
                 $lastName = sanitizeInput($_GET["Last_Name"]);
                 $sql = "SELECT * FROM EOI WHERE First_Name = '$firstName' AND Last_Name = '$lastName'";
             } else {
-                // Redirect to an error page if the first name or last name is not provided
-                header("Location: error.php");
                 exit();
             }
         } elseif ($query == "delete_by_position") {
             if (isset($_GET["Job_Reference"])) {
                 $jobReference = sanitizeInput($_GET["Job_Reference"]);
                 $sql = "DELETE FROM EOI WHERE Job_Reference = '$jobReference'";
-                // Perform the delete operation
                 if (mysqli_query($conn, $sql)) {
                     echo "EOIs with job reference '$jobReference' have been deleted successfully.";
-                    // Reset the EOInumber
                     $resetSql = "ALTER TABLE EOI AUTO_INCREMENT = 1";
                     mysqli_query($conn, $resetSql);
                 } else {
@@ -131,8 +125,6 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
                 }
                 exit();
             } else {
-                // Redirect to an error page if the job reference is not provided
-                header("Location: error.php");
                 exit();
             }
         } elseif ($query == "change_status") {
@@ -140,7 +132,6 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
                 $eoiID = sanitizeInput($_GET["eoi_number"]);
                 $status = sanitizeInput($_GET["status"]);
                 $sql = "UPDATE EOI SET Status = '$status' WHERE EOI_ID = $eoiID";
-                // Perform the status change operation
                 if (mysqli_query($conn, $sql)) {
                     echo "EOI with EOInumber '$eoiID' has been updated successfully.";
                 } else {
@@ -148,13 +139,9 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
                 }
                 exit();
             } else {
-                // Redirect to an error page if the EOInumber or status is not provided
-                header("Location: error.php");
                 exit();
             }
         } else {
-            // Redirect to an error page if an invalid query is requested
-            header("Location: error.php");
             exit();
         }
 
