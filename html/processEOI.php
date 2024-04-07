@@ -299,7 +299,8 @@ $result = mysqli_query($conn, $insertQuery);
     if (!$result){		
         echo "<p>Something is wrong with ", $insertQuery, "</p>";
     } else {		
-        echo "<p\">Successfully added new Applicant record</p>";
+        echo "<p\">Successfully added new Applicant record</p><br>
+             <a href='jobs.php'>Back to Job List</a>";
 
     }
     mysqli_close($conn);
