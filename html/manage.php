@@ -172,6 +172,8 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
 				<th>Date of Birth</th>
 				<th>Gender</th>
 				<th>Street Address</th>
+                <th>Suburb_Town</th>
+                <th>State</th>
 				<th>Postcode</th>
 				<th>Email Address</th>
 				<th>Phone Number</th>
@@ -189,6 +191,8 @@ if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
 			<td>" . $row["dob"] . "</td>
 			<td>" . $row["Gender"] . "</td>
 			<td>" . $row["Street_Address"] . "</td>
+            <td>" . $row["Suburb_Town"] . "</td>
+            <td>" . $row["State"] . "</td>
 			<td>" . $row["Postcode"] . "</td>
 			<td>" . $row["Email_Address"] . "</td>
 			<td>" . $row["Phone_Number"] . "</td>
