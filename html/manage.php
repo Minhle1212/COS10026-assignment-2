@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION["id"]) && isset($_SESSION["name"])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -212,3 +217,10 @@
 	?>
 </body>
 </html>
+<?php 
+ } else{
+     header("Location: login.php?error");
+     exit();
+}
+include 'Footer.inc';
+?>
